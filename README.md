@@ -4,14 +4,14 @@ Distinction  of foreground and background of a given scenery, the ability to eli
 elements of this sequence and optionally creating a background video.
 
 
- * For a full description of the project, please read the project documentation included 
+ * For a full description of the project, please read the project documentation included
  in the repository:
 
-   ```https://github.com/Yaccoub/Computer_Vision_Challenge/doc```
+   ```https://github.com/Yaccoub/Computer_Vision_Challenge/tree/master/doc```
 
  * To submit bug reports and feature suggestions, or track changes:
- 
-     ```https://github.com/Yaccoub/Computer_Vision_Challenge```
+
+     ```https://github.com/Yaccoub/Computer_Vision_Challenge/issues```
 
 Getting Started
 -------------
@@ -21,7 +21,7 @@ for development and testing purposes.
 Clone this repo to your local machine using:
 
 ```
-git clone https://github.com/Yaccoub/Computer_Vision_Challenge
+git clone https://github.com/Yaccoub/Computer_Vision_Challenge.git
 ```
 
 * The ChokePoint dataset used for this project can be found under
@@ -68,20 +68,20 @@ Configuration
 Deployment
 -------------
 
-After installing the prerequisites and setting up the enviroment you 
-can deploy the program using the command window: 
+After installing the prerequisites and setting up the enviroment you
+can deploy the program using the command window:
 ```
 start_gui
 ```
 
-This command will open the GUI where you can generate a masked output 
-stream and an extra video with a virtual background 
+This command will open the GUI where you can generate a masked output
+stream and an extra video with a virtual background
 
 Additional Features
 -------------
 
-Alternatively to a virtual background picture, the user have the 
-the possibility to use a virtual background video. To use this feature please enter a 
+Alternatively to a virtual background picture, the user have the
+the possibility to use a virtual background video. To use this feature please enter a
 video as background and check the box
 ``background video``
 
