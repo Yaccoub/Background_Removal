@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.baselet.element.old.allinone.ActivityDiagramText</type>
+    <coordinates>
+      <x>620</x>
+      <y>120</y>
+      <w>252</w>
+      <h>812</h>
+    </coordinates>
+    <panel_attributes>title:Free Viewpoint
+Start
+Grayscale
+Harris Feature Detector
+Extract SIFT Descriptors
+NCC Descriptor Matching
+Fundamental Matrix RanSaC
+Essential Matrix Eight Point
+Extract R and T
+Rectification
+Scale Down Rectified Images
+Stereo Matching
+Scale Up Disparity Maps
+Derectification
+Depth Maps
+Scale R and T
+Create Virtual View
+End
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

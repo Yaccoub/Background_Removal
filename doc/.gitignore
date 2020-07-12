@@ -1,0 +1,14 @@
+# Latex auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.xml
+*.gz
+*.toc
+*.fdb*
+*.fls
+
+# Output file
+Documentation.pdf

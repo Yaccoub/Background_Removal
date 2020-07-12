@@ -1,0 +1,55 @@
+\section{Theoretical Fundamentals}
+
+In this chapter, we will introduce the theoretical fundamentals behind the algorithms and techniques for foreground detection we used to solve this task. We will also present other possibilities and aspects to consider when faced with a scene dissection  problem. 
+
+This fundamental theoretical knowledge will be required for further reading of this work.
+
+\subsection{Gaussians Mixture Segmentation}
+
+Our first approach was to investigate the Adaptive Gaussian Mixture Models presented by Chris Stauffer and W.E.L Grimson in their paper \linebreak \cite{Adaptive background mixture models for real-time tracking}.
+
+\medskip
+
+We opted for this adaptive approach, since the standard non dynamical models use background substraction over an average scenery and need manual re-initialization for each given sequence. In our case and with 6 different scenes \{S1,...,S6\} from 3 different camera angles \{C1,C2,C3\} in our dataset, this would result in a significant workload.
+
+\medskip
+
+In case we opt for not reseting after each scenery, the background model errors will accumulate over time, due to changes in scene lighting and non static objects moving slowly. Proceeding this way would result in a less robust backroungs models and a significantly inaccurate segmentation.
+
+\medskip
+
+This paper describes modeling each pixel in the image as a mixture of Gaussians distributions and using an online approximation to update the background model after each iteration. These Gaussian distributions are then evaluated based on the variance and their persistence to determine those resulting from a background segment.
+
+\medskip
+
+The pixel value until a point $t$ in time is represented as a time series $\{X_{1}, ..., X_{t}\}$ and modeled by a mixture of K Gaussian distributions. The probability of observing the current pixel value at the timestamp $t$ is
+
+\begin{equation}
+P(X_t) = \sum_{i=1}^{K} \omega_{i,t} \ast \eta(X_{t},\mu_{i,t},\Sigma_{i,t})
+\end{equation}  
+
+where $K$ is the number of distributions in the mixture and $\omega_{i,t}$, $\mu_{i,t}$, $\Sigma_{i,t}$ are an estimate of weight, mean value and covariance matrix of the $i^{th}$ Gaussian mixture at time $t$, and where $\eta$ is a Gaussian probability density function. The variable $K$ will be determined heuristicly based on the image  resolution, computer performance and background complexity. The weight $\omega_{i,t}$ represents the data explained by the particular $i^{th}$ gaussian distribution. 
+
+The R, G, and B components of each pixel are assumed to be independent. In turn, the probability distribution $\eta$ for a given pixel $X_t = (R_x, G_x, B_x)$ with mean $\mu$ and standard deviation $\Sigma$ can be computed as:
+
+\begin{equation}
+\eta(X_t,\mu,\Sigma) = \frac{1}{(2\pi)^{\frac{n}{2}} \mid\Sigma\mid ^{\frac{1}{2}}} e^{-\frac{1}{2}(X_{t}-\mu_{t})^{T}\Sigma^{-1}(X_{t}-\mu_{t})}
+\end{equation}
+
+Each pixel will then be assigned to a gaussian distribution model if it is included in $2.5$ deviations standard range.
+
+\begin{equation}
+\mu_{k}-2.5 * \sigma_{k}<X_{t}<\mu_{k}+2.5 * \sigma_{k}
+\end{equation}
+
+We then sort these distributions by the value of $\omega / \sigma^2$ and select the highest B distributions (depending on the pre-configured threshhold $T$) as we are intrested in strongest weights and minimal variance for formulating our background model.  
+
+\begin{equation}
+B=\operatorname{argmin}_{b}\left(\sum_{k=1}^{b} \omega_{k}>T\right)
+\end{equation}
+
+Each pixel is then categorised depending on the classification of its own Gaussian distribution.
+
+\medskip
+
+The main argument for using this particular method to solve this task is that it is proven to be robust when it comes to lighting changes, repetitive motions of scene elements and slow-moving objects (since their color has a larger variance than the background)

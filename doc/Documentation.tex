@@ -1,0 +1,37 @@
+
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf, .png, .jpg}
+\graphicspath{ {images/} } % Specifies the directory where pictures are stored
+\newpage
+\usepackage[style=numeric]{biblatex}
+\bibliography{src/literatur}
+
+\begin{document}
+	\input{src/Titelseite}
+	\clearpage
+
+	\tableofcontents
+	\clearpage
+
+	\input{src/Einleitung}
+	\clearpage
+	\input{src/Theoretical Fundamentals}
+	\clearpage
+	\input{src/Conception and Implementation}
+	\clearpage
+	\input{src/Graphical_user_interface}
+	\clearpage
+	\input{src/Results}
+	\clearpage
+	
+	\nocite{*}
+	\printbibliography
+\end{document}
