@@ -2,10 +2,10 @@
 \subsection{Implementation of Image Reader}
 \label{subsec:Implementation of Image Reader}
 
-First, in order to read the images we have in each sequence it was important to implement the ImageReader Class which has several input parameters given through the constructor and the method Next which returns N subsequent image pairs starting at the value specified in the parameter start.
+First, to read the images we have in each sequence it was important to implement the ImageReader Class which has several input parameters given through the constructor and the method Next which returns N subsequent image pairs starting at the value specified in the parameter start.
 
-Next, as we have multiple views angles from three different cameras it was important to select the two source paths left path and right path (C1 for first camera , C2 for second camera, C3 for third camera) using the variable src and both of properties L and R which identify the cameras. 
- 
+Next, as we have multiple views angles from three different cameras it was important to select the two source paths left path and right path (C1 for the first camera , C2 for the second camera, C3 for the third camera) using the variable src and both of properties L and R which identify the cameras. 
+
 Due to the gaps in the images numbers, it was more convenient to extract the images pairwise from the text file which contains all their names. 
 
 As a further step, The variable loop was initialized with 0 and then could be changed to 1 if the reader had reached the end of the path. Depending on its value the method next would either start reading from the beginning of the file or the given start.
